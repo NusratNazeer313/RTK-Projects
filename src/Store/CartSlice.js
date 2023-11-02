@@ -16,10 +16,10 @@ const cartSlice = createSlice({
             state.cartProducts = []
         },
         remove(state, action) {
-            return state.cartProducts.filter(item => item.id !== action.payload)
+            state.cartProducts = state.cartProducts.filter(item => item.id !== action.payload)
         },
         moveAll(state, action) {
-            return state.cartProducts = action.payload;
+            state.cartProducts = action.payload;
         },
         searchTerm(state, action) {
             state.searchTerm = action.payload;
