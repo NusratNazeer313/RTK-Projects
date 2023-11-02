@@ -2,12 +2,17 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "../../componenets/Header/Header";
 import CartItems from "../../Pages/CartItems";
 import { remove } from '../../Store/CartSlice'
-import RemoveAll from "../../componenets/RemoveAll/RemoveAll";
+import { Button } from "../../componenets/Button";
+import { Link } from "react-router-dom";
+import { removeAll } from '../../Store/CartSlice'
 const AddToFavourit = () => {
     const cartProducts = useSelector(state => state.cart.favouriteProducts)
     const dispatch = useDispatch();
     const removeTocart = (id) => {
         dispatch(remove(id))
+    }
+    const removeAllTocart = () => {
+        dispatch(removeAll());
     }
     return (
         <>
@@ -37,8 +42,22 @@ const AddToFavourit = () => {
                         )
                     })}
                     <div className="flex w-full">
-                        <RemoveAll className="flex justify-start " />
-                        <RemoveAll className="flex justify-end" />
+                        <div class="flex md:order-2">
+                            <Link to={"/products"}>
+                                <Button type="button"
+                                    variant=" naked"
+                                    size="large"
+                                    className="text-black font-medium rounded-lg text-md px-4 py-2 text-center mr-3 md:mr-0 "
+                                >Return to Products</Button>
+                            </Link>
+                        </div>
+                        <Button type="button"
+                            variant=" naked"
+                            size="large"
+                            className="text-black font-medium rounded-lg text-md px-4 py-2 text-center mr-3 md:mr-0 "
+                            onClick={removeAllTocart}
+                        >Remove All </Button>
+
                     </div>
 
                 </table>

@@ -3,11 +3,17 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         cartProducts: [],
-        favouriteProducts: []
+        favouriteProducts: [],
+        search: ''
     },
     reducers: {
         add(state, action) {
-            state.cartProducts.push(action.payload)
+            let exist = state.cartProducts.findIndex(item => item.id == action.payload.id)
+            if (exist >= 0) {
+                state.cartProducts[exist] = { ...state.cartProducts[exist], count: state.cartProducts[exist].count + 1 }
+            } else {
+                state.cartProducts.push({ ...action.payload, count: 1 })
+            }
         },
         addFavourit(state, action) {
             state.favouriteProducts.push(action.payload)
@@ -22,7 +28,7 @@ const cartSlice = createSlice({
             state.cartProducts = action.payload;
         },
         searchTerm(state, action) {
-            state.searchTerm = action.payload;
+            state.search = action.payload;
         },
     }
 });

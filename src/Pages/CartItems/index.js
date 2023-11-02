@@ -12,10 +12,10 @@ const CartItems = ({ items, removeTocart }) => {
                         {items.newPrice}
                     </td>
                     <td className="w-10  text-md pl-8">
-                        1
+                        {items.count}
                     </td>
                     <td className="w-10  text-md pl-6">
-                        $ 456
+                        $ {items?.count * items?.newPrice}
                     </td>
                     <td className="w-10  text-md pl-6">
                         <img src={image} onClick={() => removeTocart(items.id)} className="w-4" />

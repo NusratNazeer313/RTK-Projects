@@ -4,12 +4,16 @@ import Banner from "../../componenets/Banner/Banner";
 import HomeProducts from "../../componenets/HomeProducts/HomeProducts";
 
 const HomePage = () => {
-    const [search, setSearch] = useState('')
+    // const [search, setSearch] = useState('')
     return (
         <>
-            <Header search={search} setSearch={setSearch} />
+            <Header
+            // search={search} setSearch={setSearch} 
+            />
             <Banner />
-            <HomeProducts search={search} />
+            <HomeProducts
+            // search={search}
+            />
         </>
     )
 };
